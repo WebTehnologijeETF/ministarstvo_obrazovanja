@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ba">
+    <head>
+    <title> Ministarstvo obrazovanja Čeljigovići</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="stil.css" type="text/css"/>
+    </head>
+<body class="body">
+    <header class="glavniheader">
+        <img src="img/logo.png" alt="logo">
+        <h2 class="naslov"> Ministarstvo obrazovanja Čeljgovići 
+        </h2>
+        <nav>
+            <ul>
+            <li><a id="0" class="pocetna" href="#" onclick="ucitaj('naslovna',this)">Naslovna</a></li>
+            <li><a href="#" id="1" class="ministarstvo" onclick="ucitaj('ministarstvo',this)">Ministarstvo</a></li>
+            <li><a href="#" id="2" class="ustanove" onclick="ucitaj('ustanove',this)">Ustanove</a></li>
+            <li><a href="#" id="3" class="kontakt" onclick="ucitaj('kontakt',this)">Kontakt</a></li>
+             <li>
+					<a href="#" id="Obrazovanje" onclick="prikaziSakrij()"  >▼ Obrazovanje</a>
+					<div id="obrazovanjeMeni" class="hidden" >
+							<a href="#">Stipendije</a>
+							<a href="#">Takmičenja</a>
+							<a href="#">Stručno usavršavanje</a>
+					</div>
+				</li>
+            </ul>
+         </nav>
+     </header>
+    
+<?php include 'novosti.php';?>
+    
+    <footer class="glavnifooter">
+        <p>Copyright &copy;<a href="#" title="DenisDzafo"> Denis Džafo </a></p>
+    </footer>
+    
+    
+<SCRIPT src="javaScript/skripta.js"></SCRIPT>
+<SCRIPT src="javaScript/AjaxMeni.js"></SCRIPT>
+</body>
+    
+    
+    
+    
+</html>
