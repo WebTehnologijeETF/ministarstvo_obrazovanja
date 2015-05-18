@@ -12,7 +12,7 @@
         </h2>
        <nav>
             <ul>
-            <li><a href="#" onclick="ucitaj('naslovna.php')">Naslovna</a></li>
+            <li><a href="#" onclick="ucitaj('index.php')">Naslovna</a></li>
             <li><a href="#" onclick="ucitaj('ministarstvo.php')">Ministarstvo</a></li>
             <li><a href="#" onclick="ucitaj('ustanove.php')">Ustanove</a></li>
             <li><a href="#" onclick="ucitaj('kontakt.php')">Kontakt</a></li>
