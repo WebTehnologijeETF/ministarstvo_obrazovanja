@@ -21,14 +21,14 @@ if(is_resource($result))
     {
         while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 
-echo '<b>'.$row['naslov'].'</b>
-
+echo '
+<b>Datum ostavljanja komentara : <b/>'.$row['date']. '<br />
 <b>Autor : </b>'.$row['autor'].'<br />
-
+<b>Email : </b>'.$row['email'].'<br />
+<b>Adresa autora : </b>'.$row['adresa'].'<br />
 <b>Komentar : </b>'.$row['komentar'].'<br />
 
 <hr width="80%" />';
-
 }
     }
 
@@ -37,16 +37,6 @@ if (isset($_POST['submitted'])) {
 
 $errors = array();
 
-if (empty($_POST['naslov'])) {
-
-$errors[] = '<font color="red">Molimo unesite naslov</font>';
-
-} else {
-
-$naslov = $_POST['naslov'];
-
-}
-
 if (empty($_POST['autor'])) {
 
 $errors[] = '<font color="red">Molimo unesite vase ime</font>';
@@ -54,6 +44,24 @@ $errors[] = '<font color="red">Molimo unesite vase ime</font>';
 } else {
 
 $autor = $_POST['autor'];
+
+}
+    if (empty($_POST['email'])) {
+
+$email = $_POST['email'];
+
+} else {
+
+$email = $_POST['email'];
+
+}
+    if (empty($_POST['adresa'])) {
+
+$errors[] = '<font color="red">Molimo unesite vašu adresu</font>';
+
+} else {
+
+$adresa = $_POST['adresa'];
 
 }
 
@@ -69,7 +77,7 @@ $komentar = $_POST['komentar'];
 
 if (empty($errors)) {
 
-$query = "INSERT INTO comments (nid, naslov, autor, komentar, date) VALUES ($id, '$naslov', '$autor', '$komentar', NOW())";
+$query = "INSERT INTO comments (nid, autor, email, adresa, komentar, date) VALUES ($id, '$autor', '$email', '$adresa', '$komentar', NOW())";
 $result = @mysql_query($query);
 
 if ($result) {
@@ -99,9 +107,12 @@ echo " - $msg<br />\n";
 
 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" />
 
-<p>Naslov komentara : <input type="text" name="naslov" maxlength="70" value="<?php if(isset($_POST['naslov'])) echo $_POST['autor'];?>" /></p>
 
 <p>Vaše ime : <input type="text" name="autor" length="25" maxlength="50" value="<?php if(isset($_POST['autor'])) echo $_POST['autor'];?>" /></p>
+
+<p>Email : <input type="text" name="email" length="25" maxlength="50" value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>" /></p>
+
+<p>Adresa : <input type="text" name="adresa" length="25" maxlength="50" value="<?php if(isset($_POST['adresa'])) echo $_POST['adresa'];?>" /></p>
 
 <p>Komentar : <textarea columns="6" rows="6" name="komentar"><?php if(isset($_POST['komentar'])) echo $_POST['komentar'];?></textarea></p>
 
