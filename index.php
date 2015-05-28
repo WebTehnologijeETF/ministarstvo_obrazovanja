@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ba">
     <head>
@@ -29,7 +30,7 @@
      </header>
     <div class="glavnisadrzaj">
         <div class="sadrzaj">
-            <?php include 'novosti.php';?>
+            <?php include 'news.php';?>
         </div>    
     </div>
      <aside class="vrh-sidebar">
@@ -53,9 +54,36 @@
     </aside>
     <aside class="sredina-sidebar">
         <article>
-            <h2>Sa strane 2</h2>             
-            <p>Protozvijezda povećala se 35 puta u samo dvije godine gutajući gas iz svoje okoline u maglini NGC 1977 u
-            </p>
+            <h2>Admin panel</h2>             
+            <form action="check.php" method="post">
+     
+    <tr> 
+          <td>
+            Username(admin):
+        </td>
+        <td>
+            <input type="text" name="name" /><br>
+        </td>
+          </tr>
+          <tr>
+          <td>
+            Password(123):
+          </td>
+            <td>
+            <input type="password" name="pass" /><br>
+          </td>
+          </tr>
+          <tr>
+              <td></td>
+
+                <td>
+                    <input type="submit" value="LOGUJ SE" />
+              </td>
+              
+          </tr>
+
+    </table>
+        </form>
         </article>
     </aside>
     <aside class="dno-sidebar">

@@ -12,10 +12,10 @@
         </h2>
         <nav>
             <ul>
-            <li><a id="0" class="pocetna" href="#" onclick="ucitaj('naslovna',this)">Naslovna</a></li>
-            <li><a href="#" id="1" class="ministarstvo" onclick="ucitaj('ministarstvo',this)">Ministarstvo</a></li>
-            <li><a href="#" id="2" class="ustanove" onclick="ucitaj('ustanove',this)">Ustanove</a></li>
-            <li><a href="#" id="3" class="kontakt" onclick="ucitaj('kontakt',this)">Kontakt</a></li>
+            <li><a href="#" onclick="ucitaj('index.php')">Naslovna</a></li>
+            <li><a href="#" onclick="ucitaj('ministarstvo.php')">Ministarstvo</a></li>
+            <li><a href="#" onclick="ucitaj('ustanove.php')">Ustanove</a></li>
+            <li><a href="#" onclick="ucitaj('kontakt.php')">Kontakt</a></li>
              <li>
 					<a href="#" id="Obrazovanje" onclick="prikaziSakrij()"  >▼ Obrazovanje</a>
 					<div id="obrazovanjeMeni" class="hidden" >
@@ -27,16 +27,19 @@
             </ul>
          </nav>
      </header>
+    <br>
+     <div class="glavnisadrzaj">
+        <div class="sadrzaj">
+            <h2>Dobro došao Administratoru! Odaberite šta želite raditi:</h2> 
+             <?php include 'news_manage.php';?>
+        </div>    
+    </div>   
     
-<?php include 'novosti.php';?>
-    
-    <footer class="glavnifooter">
-        <p>Copyright &copy;<a href="#" title="DenisDzafo"> Denis Džafo </a></p>
-    </footer>
+
     
     
 <SCRIPT src="javaScript/skripta.js"></SCRIPT>
-<SCRIPT src="javaScript/AjaxMeni.js"></SCRIPT>
+<SCRIPT src="javaScript/skriptaAjax.js"></SCRIPT>
 </body>
     
     
