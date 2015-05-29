@@ -8,7 +8,7 @@
 <body class="body">
     <header class="glavniheader">
         <img src="img/logo.png" alt="logo">
-        <h2 class="naslov"> Ministarstvo obrazovanja Čeljgovići 
+        <h2 class="naslov"> Ministarstvo obrazovanja Čeljigovići 
         </h2>
        <nav>
             <ul>
