@@ -20,6 +20,16 @@ exit();
 if (isset($_POST['submitted'])) {
 
 $errors = array();
+    
+    if (empty($_POST['slika'])) {
+
+$errors[] = 'Zaboravili ste unjeti url slike';
+
+} else {
+
+$slika = $_POST['slika'];
+
+}
 
 if (empty($_POST['naslov'])) {
 
@@ -50,10 +60,20 @@ $errors[] = 'Zaboravili ste unjeti tekst';
 $tekst = $_POST['tekst'];
 
 }
+    
+if (empty($_POST['detaljnije'])) {
+
+$detaljnije = $_POST['detaljnije'];
+
+} else {
+
+$detaljnije = $_POST['detaljnije'];
+
+}
 
 if (empty($errors)) {
 
-$query = "UPDATE news_posts SET naslov='$naslov', autor='$autor', tekst='$tekst' WHERE id=$id";
+$query = "UPDATE news_posts SET slika ='$slika', naslov='$naslov', autor='$autor', tekst='$tekst', detaljnije='$detaljnije' WHERE id=$id";
 
 $result = mysql_query($query);
 
@@ -82,7 +102,7 @@ echo " - $msg<br />\n";
 
 } else {
 
-$query = "SELECT naslov, autor, tekst, id FROM news_posts WHERE id=$id";
+$query = "SELECT slika, naslov, autor, tekst, detaljnije, id FROM news_posts WHERE id=$id";
 
 $result = mysql_query($query);
 
@@ -90,23 +110,31 @@ $num = mysql_num_rows($result);
 
 $row = mysql_fetch_array ($result, MYSQL_NUM);
 
-$naslov = $row['0'];
+    $slika =$row['0'];
+$naslov = $row['1'];
 
-$autor = $row['1'];
+$autor = $row['2'];
 
-$tekst = $row['2'];
+$tekst = $row['3'];
+    
+    $detaljnije=$row['4'];
+
 
 if ($num == 1) {
 
-echo '<h3>Edit News Post</h3>
+echo '<h3>Promjeni vijesti</h3>
 
 <form action="?id=edit_news&num='.$id.'" method="post">
+
+<p>Url slike : <input type="text" name="slika" size="25" maxlength="255" value="'.$slika.'" /></p>
 
 <p>Naslov vijesti : <input type="text" name="naslov" size="25" maxlength="255" value="'.$naslov.'" /></p>
 
 <p>Autor : <input type="text" name="autor" size="15" maxlength="255" value="'.$autor.'" /></p>
 
 <p>Tekst : <br /><textarea rows="5" cols="40" name="tekst">'.$tekst.'</textarea></p>
+
+<p>Detaljnije : <br /><textarea rows="5" cols="50" name="detaljnije">'.$detaljnije.'</textarea></p>
 
 <p><input type="submit" name="submit" value="Promjeni" /></p>
 

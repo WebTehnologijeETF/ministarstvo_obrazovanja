@@ -24,7 +24,7 @@ comments.focus()
 
 include ('mysql_connect.php');
 
-$query = "SELECT id, naslov, autor, tekst, DATE_FORMAT(datum, '%M %d, %Y'), slika, detaljnije as sd FROM news_posts";
+$query = "SELECT id, naslov, autor, tekst, datum, slika, detaljnije as sd FROM news_posts order by datum desc";
 
 $result = @mysql_query($query);
 
@@ -33,10 +33,13 @@ if ($result) {
 while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 $url = 'comments.php?id='.$row['id'];
      print "<img src='".htmlentities($row['slika'],ENT_QUOTES)."' alt='Slika'>";
+   
 echo '<p>
+
 <b>'.$row['naslov'].'</b><br />
 '.$row['sd'].'<br />
 Objavio : <b>'.$row['autor'].'</b><br />
+<b>Objavljeno : <b/>'.$row['datum']. '<br />
 '.$row['tekst'].'<br />
 
 
