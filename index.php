@@ -28,6 +28,8 @@
             </ul>
          </nav>
      </header>
+    <h2>Poruka ministra</h2>             
+            <iframe width="150" height="150" src="https://www.youtube.com/watch?v=EfI_jeYwtrM" frameborder="0" allowfullscreen></iframe>
     <div class="glavnisadrzaj">
         <div class="sadrzaj">
             <?php include 'news.php';?>
@@ -88,9 +90,8 @@
     </aside>
     <aside class="dno-sidebar">
         <article>
-            <h2>Sa strane 3</h2>             
-            <p>Protozvijezda povećala se 35 puta u samo dvije godine gutajući gas iz svoje okoline u maglini NGC 1977 u
-            </p>
+            <h2>Poruka ministra</h2>             
+            <iframe width="150" height="150" src="https://www.youtube.com/watch?v=EfI_jeYwtrM" frameborder="0" allowfullscreen></iframe>
         </article>
     </aside>
     
