@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: text/html; charset=utf-8');
 include('mysql_connect.php');
 
 $query = "SELECT id, naslov FROM news_posts";
@@ -42,7 +42,7 @@ echo '<tr>
 
 <td><a href="edit_news.php?id='.$row['id'].'">Promjeni
 
-<td><a href="delete_comments.php?id='.$row['id'].'">Obriši komentar(ne radi)
+<td><a href="list_comments.php?id='.$row['id'].'">Prikaži listu komentara za brisanje
 
 </tr>';
 
