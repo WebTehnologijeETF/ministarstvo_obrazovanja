@@ -20,16 +20,26 @@ $result = @mysql_query($query);
 if(is_resource($result))
     {
         while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-
-echo '
-<b>Datum ostavljanja komentara : <b/>'.$row['date']. '<br />
-<b>Autor : </b>'.$row['autor'].'<br />
-<b>Email : </b>'.$row['email'].'<br />
-<b>Adresa autora : </b>'.$row['adresa'].'<br />
-<b>Komentar : </b>'.$row['komentar'].'<br />
-
-<hr width="80%" />';
-}
+            if (empty($row['email'])) {
+                echo '
+                <b>Datum ostavljanja komentara : <b/>'.$row['date']. '<br />
+                <b>Autor : </b>'.$row['autor'].'<br />
+                <b>Adresa autora : </b>'.$row['adresa'].'<br />
+                <b>Komentar : </b>'.$row['komentar'].'<br />
+                <hr width="80%" />';
+            }
+            else{
+                echo '
+                <b>Datum ostavljanja komentara : <b/>'.$row['date']. '<br />
+                <b>Autor : </b>
+                <a href="send_mail.php?id='.$row['id'].'">
+                '.$row['autor'].'<br /></a>
+                <b>Email : </b>'.$row['email'].'<br />
+                <b>Adresa autora : </b>'.$row['adresa'].'<br />
+                <b>Komentar : </b>'.$row['komentar'].'<br />
+                <hr width="80%" />';
+            }
+        }
     }
 
 
@@ -48,12 +58,19 @@ $autor = htmlspecialchars($_REQUEST['autor'], ENT_QUOTES, 'UTF-8');
 }
     if (empty($_POST['email'])) {
 
-$email = htmlspecialchars($_REQUEST['email'], ENT_QUOTES, 'UTF-8');
+        $email = htmlspecialchars($_REQUEST['email'], ENT_QUOTES, 'UTF-8');
 
-} else {
-
-$email = htmlspecialchars($_REQUEST['email'], ENT_QUOTES, 'UTF-8');
-
+} 
+    else {       
+        $validno = true;
+        $email = htmlspecialchars($_REQUEST['email'], ENT_QUOTES, 'UTF-8');
+        if(!preg_match("/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]/i",$email))
+			{    
+                $validno = false;
+			}
+        if(!$validno){
+            $errors[] = '<font color="red">Molimo unesite ispravan format emaila</font>';
+        }
 }
     if (empty($_POST['adresa'])) {
 
