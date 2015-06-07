@@ -1,10 +1,12 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 if (isset($_POST['submitted'])) {
 include ('mysql_connect.php');
 $naslovbool=false;
 $autorbool=false;
 $tekstbool=false;
-$slikabool=false;    
+$slikabool=false;
+
     if (empty($_POST['slika'])) {
 echo '<p><font color="red">Zaboravili ste unjeti url slike</font></p>';
 } else {
@@ -15,27 +17,33 @@ $slika = $_POST['slika'];
 if (empty($_POST['naslov'])) {
 echo '<p><font color="red">Zaboravili ste unjeti naslov</font></p>';
 } else {
-$naslov = $_POST['naslov'];
+    $naslov = htmlspecialchars($_REQUEST['naslov'], ENT_QUOTES, 'UTF-8');
+
     $naslovbool=true; 
 }
+    if (isset($a['naslov'])) {
+        $a= htmlEntities($_GET['a'], ENT_QUOTES);
+		print "<p>Poslali ste: ".$a['naslov']."</p>";
+		 
+      } 
     
 if (empty($_POST['autor'])) {
 echo '<p><font color="red">Zaboravili ste unjeti autora</font></p>';
 } else {
-$autor = $_POST['autor'];
+$autor = htmlspecialchars($_REQUEST['autor'], ENT_QUOTES, 'UTF-8');
     $autorbool=true;
 }
 if (empty($_POST['tekst'])) {
 echo '<p><font color="red">Zaboravili ste unjeti tekst.</font></p>';
 } else {
-$tekst = $_POST['tekst'];
+$tekst = htmlspecialchars($_REQUEST['tekst'], ENT_QUOTES, 'UTF-8');
     $tekstbool=true;
 }
     
 if (empty($_POST['detaljnije'])) {
-$detaljnije = $_POST['detaljnije'];
+$detaljnije = htmlspecialchars($_REQUEST['detaljnije'], ENT_QUOTES, 'UTF-8');
 } else {
-$detaljnije = $_POST['detaljnije'];
+$detaljnije = htmlspecialchars($_REQUEST['detaljnije'], ENT_QUOTES, 'UTF-8');
 }
 
 if ($naslovbool && $autorbool && $tekstbool && $slikabool) {

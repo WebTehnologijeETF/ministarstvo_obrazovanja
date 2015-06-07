@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: text/html; charset=utf-8');
 include ('mysql_connect2.php');
 
 if (isset($_GET['id'])) {
@@ -43,16 +43,16 @@ $errors[] = '<font color="red">Molimo unesite vase ime</font>';
 
 } else {
 
-$autor = $_POST['autor'];
+$autor = htmlspecialchars($_REQUEST['autor'], ENT_QUOTES, 'UTF-8');
 
 }
     if (empty($_POST['email'])) {
 
-$email = $_POST['email'];
+$email = htmlspecialchars($_REQUEST['email'], ENT_QUOTES, 'UTF-8');
 
 } else {
 
-$email = $_POST['email'];
+$email = htmlspecialchars($_REQUEST['email'], ENT_QUOTES, 'UTF-8');
 
 }
     if (empty($_POST['adresa'])) {
@@ -61,7 +61,8 @@ $errors[] = '<font color="red">Molimo unesite vašu adresu</font>';
 
 } else {
 
-$adresa = $_POST['adresa'];
+$adresa = htmlspecialchars($_REQUEST['adresa'], ENT_QUOTES, 'UTF-8');
+
 
 }
 
@@ -71,7 +72,7 @@ $errors[] = '<font color="red">Molimo unesite vaš komentar</font>';
 
 } else {
 
-$komentar = $_POST['komentar'];
+$komentar = htmlspecialchars($_REQUEST['komentar'], ENT_QUOTES, 'UTF-8');
 
 }
 
