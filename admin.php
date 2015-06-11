@@ -1,3 +1,16 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+if (isset($_GET['id'])) {
+}
+ else {
+
+echo 'Niste logovani kao administrator';
+
+exit();
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ba">
     <head>
@@ -36,5 +49,5 @@
     
     
     
-    
 </html>
+
