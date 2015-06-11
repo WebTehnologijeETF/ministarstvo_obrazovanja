@@ -1,68 +1,68 @@
 <?php
-		define('CHARSET', 'UTF-8');
+header('Content-Type: text/html; charset=utf-8');
+function greske($error) {
+ 
+ 
+        echo "Žao nam je ali postoje neke greške u vašoj formi. ";
+ 
+        echo "Ovo su greške:<br /><br />";
+ 
+        echo $error."<br /><br />";
+ 
+        echo "Molimo vratite se  i popravite greške<br /><br />";
+        
+        die();
+        
+
+    }
 		$ime = "";
         $prezime = "";
 		$email = "";
-		$mjesto = "";
-		$postanskibroj = "";
+		$telefon = "";
+		$error_message = "";
 		$poruka = "";
-		$err1p = $err2p = $err3p = $err4p = "";
+		
         $displayCheck = 'none';
-		function editInputData($data) 
-		{
-			$data = trim($data);
-			$data = stripslashes($data);
-			$data = htmlspecialchars($data, ENT_SUBSTITUTE, CHARSET);
-			return $data;
-		}
-		function validateName($name)
-		{
-			$upperName = strtoupper($name);
-			if ($upperName == "")
-				return false;
-			for ($i = 0; $i < strlen($upperName); $i++)
-			if (((int)$upperName[$i] < 65 || (int)$upperName[$i] > 90) && (int)$upperName[$i] != ' ')
-				return false;
-			return true;
-		}
-		$valid = true;
+		
 		if(isset($_POST["send"]))
 		{
-			$ime = editInputData($_POST["ime"]);
-            $prezime = editInputData($_POST["prezime"]);
-			$email = editInputData($_POST["email"]);
-			$mjesto = editInputData($_POST["mjesto"]);
-            $postanskibroj = editInputData($_POST["postanskibroj"]);
-			$poruka = editInputData($_POST["message"]);
-			$err1p = $err2p = $err3p = $err4p = "";
+			 $ime = $_POST['ime']; 
+    $prezime = $_POST['prezime']; 
+ 
+    $email = $_POST['email']; 
+ 
+    $telefon = $_POST['telefon']; 
+ 
+    $poruka = $_POST['poruka'];
             $displayCheck = 'none';
-			if(!validateName($ime))
-			{
-				$valid = false;
-				$err1p = '<img src="img/upozorenje.jpg" class="error1" style="display: inline;" title="Polje ne smije biti prazno ili su unešeni nedozvoljeni znakovi">';
-			}
-            if(!validateName($prezime))
-			{
-                
-				$valid = false;
-				$err2p = '<img src="img/upozorenje.jpg" class="error1" style="display: inline;" title="Polje ne smije biti prazno ili su unešeni nedozvoljeni znakovi">';
-			}
-			if(!preg_match("/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]/i", $email))
-			{
-				$valid = false;
-				$err3p = '<img src="img/upozorenje.jpg" class="error1" style="display: inline;" title="Polje ne smije biti prazno ili nije unesen pravilan format maila">';
-			}
+			$string_exp = "/^[A-Za-z .'-]+$/";
+ 
+  if(!preg_match($string_exp,$ime)) {
+ 
+    $error_message .= 'Ime koje ste unjeli nije validno.<br />';
+ 
+  }
+            if(!preg_match($string_exp,$prezime)) {
+ 
+    $error_message .= 'Prezime koje ste unjeli nije validno.<br />';
+ 
+  }
 			
-			if($poruka == "")
-			{
-				$valid = false;
-				$err4p = '<img src="img/upozorenje.jpg" class="error1" style="display: inline;" title="Polje ne smije biti prazno">';
-			}
-			if($valid)
-			{
+            $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
+ 
+  if(!preg_match($email_exp,$email)) {
+ 
+      $error_message .= 'Email koji ste unjeli nije validan.<br />';
+ 
+  }
+			
+			if(strlen($poruka) < 2) {
+ 
+    $error_message .= 'Poruka koju ste unjeli nije validna.<br />';
+ 
+  }
 				$displayCheck = 'block';
-				$header = "Ako ste pogrešno popunili formu, možete ispod prepraviti unesene podatke";
-			}
+			
 		}
 		if(isset($_POST["siguran"]))
 		{
@@ -72,8 +72,8 @@
 			$txt = $ime = $_POST["imeH"];
             $txt = $prezime = $_POST["prezimeH"];
 			$txt = $email = $_POST["emailH"];
-			$txt = $mjesto = $_POST["mjestoH"];
-            $txt = $postanskibroj = $_POST["postanskibrojH"];
+			$txt = $telefon = $_POST["telefonH"];
+            
 			$txt = $poruka = $_POST["porukaH"];
             $displayCheck = $_POST["displayCheckH"];
             $headers = "From: webmaster@example.com" . "\r\n" .
@@ -83,6 +83,30 @@
                     mail($to,$subject,$txt,$headers);
 			echo '<script>alert("Zahvaljujemo se što ste nas kontaktirali")</script>';
 		}
+$email_message = "Detalji forme ispod.\n\n";
+function ocisti_string($string) {
+ 
+      $bad = array("content-type","bcc:","to:","cc:","href");
+ 
+      return str_replace($bad,"",$string);
+ 
+    }
+  if(strlen($error_message) > 0) {
+ 
+    greske($error_message);
+ 
+  }
+
+ $email_message .= "Ime: ".ocisti_string($ime)."\n";
+ 
+    $email_message .= "Prezime: ".ocisti_string($prezime)."\n";
+ 
+    $email_message .= "Email: ".ocisti_string($email)."\n";
+ 
+    $email_message .= "Telefon: ".ocisti_string($telefon)."\n";
+ 
+    $email_message .= "Poruka: ".ocisti_string($poruka)."\n";
+ 
 	?>
    
     <body>
@@ -95,8 +119,8 @@
 						<input type="hidden" name="imeH" value="<?php echo $ime; ?>">
                         <input type="hidden" name="prezimeH" value="<?php echo $prezime; ?>">
 						<input type="hidden" name="emailH" value="<?php echo $email; ?>">
-						<input type="hidden" name="mjestoH" value="<?php echo $mjesto; ?>">
-                        <input type="hidden" name="postanskibrojH" value="<?php echo $postanskibroj; ?>">
+						<input type="hidden" name="telefonH" value="<?php echo $telefon; ?>">
+                        
 						<input type="hidden" name="porukaH" value="<?php echo $poruka; ?>">
                         <input type="hidden" name="displayCheckH" value="<?php echo $displayCheck; ?>">
 						<h4>Da li ste ispravno unjeli podatke?</h4>
@@ -105,8 +129,8 @@
 							echo "Ime: ".$ime."<br>";
                             echo "Prezime: ".$prezime."<br>";
 							echo "Email: ".$email."<br>";
-							echo "Mjesto: ".$mjesto."<br>";
-                            echo "Postanski broj: ".$postanskibroj."<br>";
+							echo "Telefon: ".$telefon."<br>";
+                            
 							echo "Poruka: ".$poruka."<br>";
 						?>
 						</p>
@@ -116,34 +140,91 @@
 				</div>
 				<p>(*) - Obavezna polja </p>
 				<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-					<p>
-					Ime : *<br>
-					<input type="text" name="ime" value="<?php echo $ime; ?>"><?php echo $err1p; ?>
-					<br>
-					<br>
-					Prezime: *<br>
-					<input type="text" name="prezime" value="<?php echo $prezime; ?>"><?php echo $err2p; ?>
-					<br>
-					<br>
-					Email: *<br>
-					<input type="text" name="email" value="<?php echo $email; ?>"><?php echo $err3p; ?>
-					<br>
-					<br>
-					Mjesto:<br>
-					<input type="text" name="mjesto" value="<?php echo $mjesto; ?>">
-					<br>
-					<br>
-                    Poštanski broj:<br>
-					<input type="text" name="postanskibroj" value="<?php echo $postanskibroj; ?>">
-					<br>
-					<br>
+					<table width="450px">
+					<tr>
+ 
+ <td valign="top">
+ 
+  <label for="ime">Ime *</label>
+ 
+ </td>
+ 
+ <td valign="top">
+ 
+  <input  type="text" name="ime" maxlength="50" size="30">
+ 
+ </td>
+ 
+</tr>
+					<tr>
+ 
+ <td valign="top"">
+ 
+  <label for="prezime">Prezime *</label>
+ 
+ </td>
+ 
+ <td valign="top">
+ 
+  <input  type="text" name="prezime" maxlength="50" size="30">
+ 
+ </td>
+ 
+</tr>
+					<tr>
+ 
+ <td valign="top">
+ 
+  <label for="email">Email adresa *</label>
+ 
+ </td>
+ 
+ <td valign="top">
+ 
+  <input  type="text" name="email" maxlength="80" size="30">
+ 
+ </td>
+ 
+</tr>
+					<tr>
+ 
+ <td valign="top">
+ 
+  <label for="telefon">Broj telefona</label>
+ 
+ </td>
+ 
+ <td valign="top">
+ 
+  <input  type="text" name="telefon" maxlength="30" size="30">
+ 
+ </td>
+ 
+</tr>
+                    
 
-					Poruka: *<br>
-					<textarea rows="10" cols="80" name="message"><?php echo $poruka; ?></textarea><?php echo $err4p; ?><br>
-					<br>
+					<tr>
+ 
+ <td valign="top">
+ 
+  <label for="poruka">Poruka *</label>
+ 
+ </td>
+ 
+ <td valign="top">
+ 
+  <textarea  name="poruka" maxlength="1000" cols="25" rows="6"></textarea>
+ 
+ </td>
+ 
+</tr>
+<tr>
+    <td colspan="2" style="text-align:center">
 					<button name="send" type="submit">Pošalji</button>
 					<button name="reset" type="submit">Resetuj</button>
-					</p>
+                                                      </td>
+                                                      </tr>
+					</table>
 				</form>
 				<br>
 				<br>
