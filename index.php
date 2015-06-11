@@ -28,8 +28,7 @@
             </ul>
          </nav>
      </header>
-    <h2>Poruka ministra</h2>             
-            <iframe width="150" height="150" src="https://www.youtube.com/watch?v=EfI_jeYwtrM" frameborder="0" allowfullscreen></iframe>
+           
     <div class="glavnisadrzaj">
         <div class="sadrzaj">
             <?php include 'news.php';?>
@@ -90,8 +89,8 @@
     </aside>
     <aside class="dno-sidebar">
         <article>
-            <h2>Poruka ministra</h2>             
-            <iframe width="150" height="150" src="https://www.youtube.com/watch?v=EfI_jeYwtrM" frameborder="0" allowfullscreen></iframe>
+            <h2>Niste naš korisnik, registruj te se</h2>             
+            <a href="registracija.php">Registracija</a></li>
         </article>
     </aside>
     
