@@ -12,7 +12,7 @@ if ($result) {
 echo '<div align="center">
 
 <p><a href="addnews.php">Dodaj vijest</a></td></p>
-<p><a href="addadmin.php">Dodaj privilegije administratora</a></td></p>
+<p><a href="addadmin.php">Dodaj privilegije administratora ili obriši korisnika</a></td></p>
 <p><a href="destroyadmin.php">Oduzmi privilegije administratora</a></td></p>
 <table border="0">
 

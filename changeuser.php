@@ -26,6 +26,7 @@ echo '
                 '.$row['name'].'<br /></a>
                 <b>Email : </b>'.$row['email'].'<br />
                 <b>Ime: </b>'.$row['ime'].'<br />
+                <a href="deleteuser.php?id='.$row['id'].'">Obriši korisnika</a>
                 <hr width="80%" />';
 }
     }
