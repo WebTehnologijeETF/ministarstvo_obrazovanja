@@ -1,3 +1,9 @@
+<html>
+<head>
+  
+</head>
+ <body>
+     
 <?php
 header('Content-Type: text/html; charset=utf-8');
 include ('mysql_connect2.php');
@@ -31,10 +37,9 @@ if(is_resource($result))
             else{
                 echo '
                 <b>Datum ostavljanja komentara : <b/>'.$row['date']. '<br />
-                <b>Autor : </b>
-                <a href="send_mail.php?id='.$row['id'].'">
-                '.$row['autor'].'<br /></a>
-                <b>Email : </b>'.$row['email'].'<br />
+                <b>Autor : </b>'.$row['autor'].'<br /></a>
+                <a href="mailto:'.$row['email'].'">
+                <b>Email : </b>'.$row['email'].'</a><br />
                 <b>Adresa autora : </b>'.$row['adresa'].'<br />
                 <b>Komentar : </b>'.$row['komentar'].'<br />
                 <hr width="80%" />';
@@ -122,27 +127,30 @@ echo " - $msg<br />\n";
 } else {
 
 ?>
-
+<div ng-app>
 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" />
 
 
-<p>Vaše ime : <input type="text" name="autor" length="25" maxlength="50" value="<?php if(isset($_POST['autor'])) echo $_POST['autor'];?>" /></p>
+<p>Vaše ime : <input ng-model type="text" name="autor" length="25" maxlength="50" value="<?php if(isset($_POST['autor'])) echo $_POST['autor'];?>" /></p>
 
-<p>Email : <input type="text" name="email" length="25" maxlength="50" value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>" /></p>
+<p>Email : <input ng-model type="text" name="email" length="25" maxlength="50" value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>" /></p>
 
-<p>Adresa : <input type="text" name="adresa" length="25" maxlength="50" value="<?php if(isset($_POST['adresa'])) echo $_POST['adresa'];?>" /></p>
+<p>Adresa : <input ng-model type="text" name="adresa" length="25" maxlength="50" value="<?php if(isset($_POST['adresa'])) echo $_POST['adresa'];?>" /></p>
 
-<p>Komentar : <textarea columns="6" rows="6" name="komentar"><?php if(isset($_POST['komentar'])) echo $_POST['komentar'];?></textarea></p>
+<p>Komentar : <textarea ng-model columns="6" rows="6" name="komentar"><?php if(isset($_POST['komentar'])) echo $_POST['komentar'];?></textarea></p>
 
-<p><div align="center"><input type="submit" name="submit" value="Ostavite komentar" /></div></p>
+<p><div align="center"><input type="submit" name="submit" value="Ostavite komentar"/></div></p>
 
 <input type="hidden" name="submitted" value="TRUE" />
 
 </form>
-
+</div>
 <?php
 
 }
 
 ?>
 <div align="center"><a href="javascript:window.close()">Zatvorite ovaj prozor</a></div>
+</body>
+
+</html>
