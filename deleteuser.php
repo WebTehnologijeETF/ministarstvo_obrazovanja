@@ -41,4 +41,4 @@ echo 'Prije nego posjetite ovu stranicu odaberite korisnika kojeg želite obrisa
 ?>
 
 
-<div align="center"><a href="index.php">Zatvorite ovaj prozor</a></div>
+<div align="center"><a href="admin.php?id">Zatvorite ovaj prozor</a></div>
