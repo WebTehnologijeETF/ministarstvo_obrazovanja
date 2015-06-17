@@ -9,7 +9,7 @@ function greske($error) {
  
         echo $error."<br /><br />";
  
-        echo "Molimo vratite se  i popravite greške<br /><br />";
+        echo '<a href="kontakt.php">Molimo vratite se i popravite greške<br /><br />';
         
         die();
         
