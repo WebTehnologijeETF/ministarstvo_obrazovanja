@@ -151,4 +151,4 @@ echo 'Nije moguće promjeniti vijesti, pokušajte kasnije';
 
 ?>
 
-<div align="center"><a href="admin.php">Zatvorite ovaj prozor</a></div>
+<div align="center"><a href="admin.php?id">Zatvorite ovaj prozor</a></div>

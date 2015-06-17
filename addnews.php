@@ -80,4 +80,4 @@ echo '<p><font color="red">Molimo unesite informacije</font></p>';
 <input type="hidden" name="submitted" value="TRUE" /></p>
 </form>
 
-<div align="center"><a href="admin.php">Zatvorite ovaj prozor</a></div>
+<div align="center"><a href="admin.php?id">Zatvorite ovaj prozor</a></div>

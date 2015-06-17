@@ -41,4 +41,4 @@ echo 'Prije nego posjetite ovu stranicu odaberite komentar koji želite obrisati
 ?>
 
 
-<div align="center"><a href="admin.php">Zatvorite ovaj prozor</a></div>
+<div align="center"><a href="admin.php?id">Zatvorite ovaj prozor</a></div>

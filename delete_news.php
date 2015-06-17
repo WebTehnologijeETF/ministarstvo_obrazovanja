@@ -39,4 +39,4 @@ echo 'Prije nego posjetite ovu stranicu odaberite vijest koju želite obrisati!'
 ?>
 
 
-<div align="center"><a href="admin.php">Zatvorite ovaj prozor</a></div>
+<div align="center"><a href="admin.php?id">Zatvorite ovaj prozor</a></div>

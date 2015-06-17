@@ -10,7 +10,7 @@ $result = @mysql_query($query);
 if(is_resource($result))
     {
         while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-if($name==$row['name'] && $pass==$row['pass']){
+if($name==$row['ime'] && $pass==$row['pass']){
    $_SESSION['name']="name";
     $_SESSION['pass']="pass";
     $provjera=true;

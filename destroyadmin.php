@@ -18,4 +18,4 @@ echo '
 }
 }
 ?>
-<div align="center"><a href="index.php">Zatvorite ovaj prozor</a></div>
+<div align="center"><a href="admin.php?id">Zatvorite ovaj prozor</a></div>
