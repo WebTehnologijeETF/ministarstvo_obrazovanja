@@ -54,4 +54,4 @@ echo "Uloga korisnika nije promjenjena";
     <p><input type="submit" name="submit" value="Promjeni ulogu korisnika" /></p>
 <input type="hidden" name="submitted" value="TRUE" /></p>
 </form>
-<div align="center"><a href="addadmin.php?id">Zatvorite ovaj prozor</a></div>
+<div align="center"><a href="addadmin.php">Zatvorite ovaj prozor</a></div>

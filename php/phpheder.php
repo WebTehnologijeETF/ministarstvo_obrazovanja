@@ -13,13 +13,13 @@
         <nav>
             <ul>
             <li><a href="#" onclick="ucitaj('index.php')">Naslovna</a></li>
-            <li><a href="#" onclick="ucitaj('ministarstvo.php')">Ministarstvo</a></li>
-            <li><a href="#" onclick="ucitaj('ustanove.php')">Ustanove</a></li>
-            <li><a href="#" onclick="ucitaj('kontakt.php')">Kontakt</a></li>
+            <li><a href="#" onclick="ucitaj('php/ministarstvo.php')">Ministarstvo</a></li>
+            <li><a href="#" onclick="ucitaj('php/ustanove.php')">Ustanove</a></li>
+            <li><a href="#" onclick="ucitaj('php/kontakt.php')">Kontakt</a></li>
              <li>
 					<a href="#" id="Obrazovanje" onclick="prikaziSakrij()"  >▼ Obrazovanje</a>
 					<div id="obrazovanjeMeni" class="hidden" >
-							<a href="#" onclick="ucitaj('stipendije.php')">Stipendije</a>
+							<a href="#" onclick="ucitaj('php/stipendije.php')">Stipendije</a>
 							<a href="#">Takmičenja</a>
 							<a href="#">Stručno usavršavanje</a>
 					</div>
@@ -27,11 +27,3 @@
             </ul>
          </nav>
      </header>
-    <?php include "phpkontakt.php"; ?>
-    
-    <footer class="glavnifooter">
-        <p>Copyright &copy;<a href="#" title="DenisDzafo"> Denis Džafo </a></p>
-    </footer>
-    <SCRIPT src="javaScript/skripta.js"></SCRIPT>
-    </body>
-</html>

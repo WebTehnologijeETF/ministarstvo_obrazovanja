@@ -1,39 +1,20 @@
 
-<!DOCTYPE html>
-<html lang="ba">
-    <head>
-    <title> Ministarstvo obrazovanja Čeljigovići</title>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" href="stil/stil.css" type="text/css"/>
-    </head>
-<body class="body">
-    <header class="glavniheader">
-        <img src="img/logo.png" alt="logo">
-        <h2 class="naslov"> Ministarstvo obrazovanja Čeljigovići 
-        </h2>
-        <nav>
-            <ul>
-            <li><a href="#" onclick="ucitaj('index.php')">Naslovna</a></li>
-            <li><a href="#" onclick="ucitaj('ministarstvo.php')">Ministarstvo</a></li>
-            <li><a href="#" onclick="ucitaj('ustanove.php')">Ustanove</a></li>
-            <li><a href="#" onclick="ucitaj('kontakt.php')">Kontakt</a></li>
-             <li>
-					<a href="#" id="Obrazovanje" onclick="prikaziSakrij()"  >▼ Obrazovanje</a>
-					<div id="obrazovanjeMeni" class="hidden" >
-							<a href="#" onclick="ucitaj('stipendije.php')">Stipendije</a>
-							<a href="#">Takmičenja</a>
-							<a href="#">Stručno usavršavanje</a>
-					</div>
-				</li>
-            </ul>
-         </nav>
-     </header>
-           
+<?php include 'php/phpheder.php';?>
+   <?php
+    session_start();
+if (isset($_SESSION['ime'])) 
+{ $username= $_SESSION['ime'];
+  print "<p> Prijavljeni ste pod korisničkim imenom:  ".$username."</p>";
+  print "<p><a href='php/logoutKorisnik.php'>Odjava</a></p>";
+}
+    ?>
+    
     <div class="glavnisadrzaj">
         <div class="sadrzaj">
-            <?php include 'news.php';?>
+            <?php include 'php/news.php';?>
         </div>    
     </div>
+    
      <aside class="vrh-sidebar">
         <article>
             <h2>Srodne Stranice</h2>             
@@ -56,7 +37,7 @@
     <aside class="sredina-sidebar">
         <article>
             <h2>Admin panel</h2>             
-            <form action="check.php" method="post">
+            <form action="php/check.php" method="post">
      
     <tr> 
           <td>
@@ -75,6 +56,8 @@
           </td>
           </tr>
           <tr>
+              <td></td>
+
                 <td>
                     <input type="submit" value="LOGUJ SE" />
               </td>
@@ -83,12 +66,24 @@
 
         </form>
         </article>         
-            <a href="reset_password.php">Zaboravili ste password</a></li>
+            <a href="php/reset_password.php">Zaboravili ste password</a></li>
     </aside>
     <aside class="dno-sidebar">
         <article>
+    <form  action="php/korisnikPrijava.php" method="POST">
+            <p>Prijava za korisnika </p>
+            <table id="korisniLogin">
+            <tr>
+                <td><input name="ime"  type="text" ></td>
+             </tr>     
+            <tr>
+                <td><input name="pass" type="password"> </td>
+            </tr>
+                </table>
+        <button name="send" type="submit" >Prijava</button>
+     </form>
             <h2>Niste naš korisnik, registruj te se</h2>             
-            <a href="registracija.php">Registracija</a></li>
+            <a href="php/registracija.php">Registracija</a></li>
         </article>
     </aside>
     
@@ -96,7 +91,9 @@
         <p>Copyright &copy;<a href="#" title="DenisDzafo"> Denis Džafo </a></p>
     </footer>
     
-    
+ <script type="text/javascript">
+  setTimeout(function () { location.reload(true); }, 15000);
+</script>   
 <SCRIPT src="javaScript/skripta.js"></SCRIPT>
 <SCRIPT src="javaScript/skriptaAjax.js"></SCRIPT>
 </body>

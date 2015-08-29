@@ -1,4 +1,8 @@
 <?php
+     $cssFile = "stil/stil.css";
+     echo "<link rel='stylesheet' href='" . $cssFile . "'>";
+   ?>
+<?php
     header('Content-Type: text/html; charset=utf-8');
 
     $ime = "";
@@ -28,13 +32,13 @@ if(isset($_POST["send"]))
          $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
  
   if(!preg_match($string_exp,$ime)) {
-    $slika1 = '<img src="img/upozorenje.jpg" class="error1" style="display: inline;">';
+    $slika1 = '<img src="../img/upozorenje.jpg" class="error1" style="display: inline;">';
     $tekst1 .= 'Ime koje ste unjeli nije validno.<br />';
     $valid = false;
   }
   
   if(!preg_match($string_exp,$prezime)) {
-    $slika2 = '<img src="img/upozorenje.jpg" class="error1" style="display: inline;">';
+    $slika2 = '<img src="../img/upozorenje.jpg" class="error1" style="display: inline;">';
     $tekst2 .= 'Prezime koje ste unjeli nije validno.<br />';
     $valid = false;
 
@@ -42,20 +46,20 @@ if(isset($_POST["send"]))
 
  
   if(!preg_match($email_exp,$email)) {
-    $slika3 = '<img src="img/upozorenje.jpg" class="error1" style="display: inline;">';
+    $slika3 = '<img src="../img/upozorenje.jpg" class="error1" style="display: inline;">';
     $tekst3 .= 'Email koji ste unjeli nije validan.<br />';
     $valid = false;
   }
 
         
   if(strcmp($email, $email2)){
-    $slika4 = '<img src="img/upozorenje.jpg" class="error1" style="display: inline;">';
+    $slika4 = '<img src="../img/upozorenje.jpg" class="error1" style="display: inline;">';
     $tekst4 .= 'Email koji ste unjeli nije isti.<br />';
     $valid = false;
   }  
 			
   if(strlen($poruka) < 2) {
-    $slika5 = '<img src="img/upozorenje.jpg" class="error1" style="display: inline;">';
+    $slika5 = '<img src="../img/upozorenje.jpg" class="error1" style="display: inline;">';
     $tekst5 .= 'Poruka koju ste unjeli nije validna.<br />';
     $valid = false;
   }
@@ -63,12 +67,14 @@ if(isset($_POST["send"]))
 		if($valid)
 			{
 				$displayCheck = 'block';
-				
+				$header = "Ako ste pogrešno popunili formu, možete ispod prepraviti unesene podatke";
 			}	
 }
 
 if(isset($_POST["siguran"]))
-{            $to = "ddzafo1@etf.unsa.ba";
+{
+			$header = "Ako ste pogrešno popunili formu, možete ispod prepraviti unesene podatke";
+            $to = "ddzafo1@etf.unsa.ba";
             $subject = "Poruka poslana sa kontakt forme";
 			$txt = $ime = htmlspecialchars($_REQUEST['imeH'], ENT_QUOTES, 'UTF-8');
             $txt = $prezime = htmlspecialchars($_REQUEST['prezimeH'], ENT_QUOTES, 'UTF-8');
@@ -122,45 +128,47 @@ if(isset($_POST["siguran"]))
                    <div id="forma">
 			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 			<p>Ime(*):</p>
-                        <input type="text" name="ime">
+                        <input type="text" name="ime" value="<?php echo $ime; ?>">
                         <?php echo $slika1; ?>
                         <?php echo $tekst1; ?>
                        
             <p>Prezime(*):</p>
-                        <input type="text" name="prezime">
+                        <input type="text" name="prezime" value="<?php echo $prezime; ?>">
                         <?php echo $slika2; ?>
                         <?php echo $tekst2; ?>
                         
             <p>E-mail(*):</p>
                 
-                        <input type="text"  name="email">
+                        <input type="text"  name="email" value="<?php echo $email; ?>">
                         <?php echo $slika3; ?>
                         <?php echo $tekst3; ?>
                         
                        
             <p>Potvrdite e-mail(*):</p>
-                        <input type="text" name="email2">
+                        <input type="text" name="email2" value="<?php echo $email2; ?>">
                         <?php echo $slika4; ?>
                         <?php echo $tekst4; ?>
                     
                             
             <p>Zanimanje: </p>
-                        <input type="text" name="zanimanje">
+                        <input type="text" name="zanimanje" value="<?php echo $zanimanje; ?>">
                         
                 
 			
-            <p>Mjesto(*):</p>
-				        <input type="text" name="mjesto" id="mjesto">
+            <p>Mjesto:</p>
+				        <input type="text" name="mjesto" id="mjesto" value="<?php echo $mjesto; ?>">
                 
-			               
+			
+		
+                
 
-                <p>Poštanski broj(*):</p>
-                        <input type="text" name="pbr" id="pbr">
+                <p>Poštanski broj:</p>
+                        <input type="text" name="pbr" id="pbr" value="<?php echo $pbr; ?>">
                         
 			
 			 <br>
 			 <p>Poruka(*):</p>
-                        <textarea rows="4" cols="50" name="poruka"></textarea>
+                        <textarea rows="4" cols="50" name="poruka"><?php echo $ime; ?></textarea>
                         <?php echo $slika5; ?>
                         <?php echo $tekst5; ?>
                         <br/>
