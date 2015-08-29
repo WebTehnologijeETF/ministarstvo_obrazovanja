@@ -16,26 +16,62 @@
             <li><a href="ministarstvo.html">Ministarstvo</a></li>
             <li><a href="ustanove.html">Ustanove</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
+            <li>
+					<a href="#" id="Obrazovanje" onclick="prikaziSakrij()"  >▼ Obrazovanje</a>
+					<div id="obrazovanjeMeni" class="hidden" >
+							<a href="#">Stipendije</a>
+							<a href="#">Takmičenja</a>
+							<a href="#">Stručno usavršavanje</a>	
+					</div>
+            </li>
             </ul>
          </nav>
      </header>
     <div class="kontaktforma">
-                    
-                        <p>Ime:</p>
+        <p>Obavezna polja *</p>
+                     <div id="forma">
+			<form onsubmit="validacijaKontakt(); return false;">
+                
+			<p>Ime(*):</p>
                         <input type="text" id="ime" name="ime" class="input1" />
-                        <p>Prezime:</p>
-                        <input type="text" name="prezime" class="input1" />
-                        <p>E-mail:</p>
-                        <input type="text" name="email" class="input1" />
+                        <img src="img/upozorenje.jpg" id="imeUpozorenje" />
+                        <p id="imeTekst"> Ime nije validno</p>
+            <p>Prezime(*):</p>
+                        <input type="text" id="prezime" name="prezime" class="input1" />
+                        <img src="img/upozorenje.jpg" id="prezimeUpozorenje" />
+                        <p id="prezimeTekst"> Prezime nije validno</p>
+            <p>E-mail(*):</p>
+                
+                        <input type="text" id="email" name="email" class="input1" />
+                        <img src="img/upozorenje.jpg" id="emailUpozorenje" />
+                        <p id="emailTekst"> Email nije validan</p>
+                       
+            <p>Potvrdite e-mail(*):</p>
+                        <input type="text" id="email2" name="email2" class="input1" />
+                        <img src="img/upozorenje.jpg" id="email2Upozorenje" />
+                        <p id="email2Tekst"> Email nije isti</p>
                         
-                        <p>Poruka:</p>
-                        <textarea rows="4" name="poruka" cols="50" class="input1"></textarea>
+            <p>Zanimanje: </p>
+                        <input type="text" name="zanimanje" class="input1" />
+                	
+			<br>
+			 <p>Poruka(*):</p>
+                        <textarea rows="4" id="poruka" name="poruka" cols="50" class="input1"></textarea>
+                        <img src="img/upozorenje.jpg" id="porukaUpozorenje" />
+                        <p id="porukaTekst"> Poruka mora sadržavati neki tekst</p>
                         <br/>
-                        <input type="submit" value="Pošalji" />
+                
+			<div id="dugme">
+				<input type="submit" value="Pošalji"> 
+                <input type="reset" value="Poništi" />
+			</div>
+			</form>
+		</div>
                     
         </div>
     <footer class="glavnifooter">
         <p>Copyright &copy;<a href="#" title="DenisDzafo"> Denis Džafo </a></p>
     </footer>
+    <SCRIPT src="javaScript/skripta.js"></SCRIPT>
     </body>
 </html>
