@@ -199,3 +199,23 @@ a:hover, a:active{
 	background-color: #cf5c3f;
 	border-radius:5px;
 }
+
+#mjestoUpozorenje {
+    visibility: hidden;
+}
+#mjestoTekst{
+    color: red;
+    visibility: hidden;
+}
+
+#postanskiBrojUpozorenje {
+    visibility: hidden;
+}
+#postanskiBrojTekst{
+    color: red;
+    visibility: hidden;
+}
+#postanskiMjesto{
+    color: red;
+    visibility: hidden;
+}
