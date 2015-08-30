@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ba">
+    <head>
+    <title> Ministarstvo obrazovanja Čeljigovići</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="stil/stil.css" type="text/css"/>
+    </head>
+<body class="body">
+    <header class="glavniheader">
+        <img src="img/logo.png" alt="logo">
+        <h2 class="naslov"> Ministarstvo obrazovanja Čeljigovići 
+        </h2>
+        <nav>
+             <ul>
+            <li><a href="#" onclick="ucitaj('index.html')">Naslovna</a></li>
+            <li><a href="#" onclick="ucitaj('ministarstvo.html')">Ministarstvo</a></li>
+            <li><a href="#" onclick="ucitaj('ustanove.html')">Ustanove</a></li>
+            <li><a href="#" onclick="ucitaj('kontakt.html')">Kontakt</a></li>
+             <li>
+					<a href="#" id="Obrazovanje" onclick="prikaziSakrij()"  >▼ Obrazovanje</a>
+					<div id="obrazovanjeMeni" class="hidden" >
+							<a href="#" onclick="ucitaj('stipendije.html')">Stipendije</a>
+							<a href="#">Takmičenja</a>
+							<a href="#">Stručno usavršavanje</a>
+					</div>
+				</li>
+            </ul>
+            
+         </nav>
+     </header>
+    <div class="kontaktforma">
+        <p>Obavezna polja *</p>
+                   <div id="forma">
+			<form onsubmit="validacijaKontakt(); return false;">
+                
+			<p>Ime(*):</p>
+                        <input type="text" id="ime" name="ime" class="input1" />
+                        <img src="img/upozorenje.jpg" id="imeUpozorenje" />
+                        <p id="imeTekst"> Ime nije validno</p>
+            <p>Prezime(*):</p>
+                        <input type="text" id="prezime" name="prezime" class="input1" />
+                        <img src="img/upozorenje.jpg" id="prezimeUpozorenje" />
+                        <p id="prezimeTekst"> Prezime nije validno</p>
+            <p>E-mail(*):</p>
+                
+                        <input type="text" id="email" name="email" class="input1" />
+                        <img src="img/upozorenje.jpg" id="emailUpozorenje" />
+                        <p id="emailTekst"> Email nije validan</p>
+                       
+            <p>Potvrdite e-mail(*):</p>
+                        <input type="text" id="email2" name="email2" class="input1" />
+                        <img src="img/upozorenje.jpg" id="email2Upozorenje" />
+                        <p id="email2Tekst"> Email nije isti</p>
+                        
+            <p>Zanimanje: </p>
+                        <input type="text" name="zanimanje" class="input1" />
+                
+			
+            <p>Mjesto(*):</p>
+				        <input type="text" name="mjesto" id="mjesto">
+				        <img src="img/upozorenje.jpg" id="mjestoUpozorenje" />
+				        <p id="obaveznoM"> </p>
+			
+		
+                
+
+				<p>Poštanski broj(*):</p>
+				        <input type="text" name="pbr" id="pbr">
+				        <img src="img/upozorenje.jpg" id="postanskiBrojUpozorenje" />
+				<p id="obaveznoPB"> </p>
+			
+			<br>
+			 <p>Poruka(*):</p>
+                        <textarea rows="4" id="poruka" name="poruka" cols="50" class="input1"></textarea>
+                        <img src="img/upozorenje.jpg" id="porukaUpozorenje" />
+                        <p id="porukaTekst"> Poruka mora sadržavati neki tekst</p>
+                        <br/>
+                
+			<div id="dugme">
+				<input type="submit" value="Pošalji"> 
+                <input type="reset" value="Poništi" />
+			</div>
+			</form>
+		</div>
+                    
+        </div>
+ <footer class="glavnifooter">
+        <p>Copyright &copy;<a href="#" title="DenisDzafo"> Denis Džafo </a></p>
+    </footer>
+    
+    <SCRIPT src="javaScript/skripta.js"></SCRIPT> 
+    <SCRIPT src="javaScript/skriptaAjax.js"></SCRIPT>
+    <SCRIPT src="javaScript/proizvodi.js"></SCRIPT>
+</body>
+    
+    
+    
+    
+</html>

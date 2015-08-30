@@ -119,4 +119,5 @@ function validacijaKontakt(){
 	ajax.open("GET", "http://zamger.etf.unsa.ba/wt/postanskiBroj.php?mjesto=" + mjesto + "&postanskiBroj=" + pbroj, true);
 	ajax.send();
 	
+	//return validna;
 }
