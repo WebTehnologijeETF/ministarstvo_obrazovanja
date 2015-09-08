@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ba">
     <head>
@@ -11,23 +12,23 @@
         <h2 class="naslov"> Ministarstvo obrazovanja Čeljigovići 
         </h2>
         <nav>
-             <ul>
-            <li><a href="#" onclick="ucitaj('index.html')">Naslovna</a></li>
-            <li><a href="#" onclick="ucitaj('ministarstvo.html')">Ministarstvo</a></li>
-            <li><a href="#" onclick="ucitaj('ustanove.html')">Ustanove</a></li>
-            <li><a href="#" onclick="ucitaj('kontakt.html')">Kontakt</a></li>
+            <ul>
+            <li><a href="#" onclick="ucitaj('index.php')">Naslovna</a></li>
+            <li><a href="#" onclick="ucitaj('ministarstvo.php')">Ministarstvo</a></li>
+            <li><a href="#" onclick="ucitaj('ustanove.php')">Ustanove</a></li>
+            <li><a href="#" onclick="ucitaj('kontakt.php')">Kontakt</a></li>
              <li>
 					<a href="#" id="Obrazovanje" onclick="prikaziSakrij()"  >▼ Obrazovanje</a>
 					<div id="obrazovanjeMeni" class="hidden" >
-							<a href="#" onclick="ucitaj('stipendije.html')">Stipendije</a>
+							<a href="#" onclick="ucitaj('stipendije.php')">Stipendije</a>
 							<a href="#">Takmičenja</a>
 							<a href="#">Stručno usavršavanje</a>
 					</div>
 				</li>
             </ul>
-            
          </nav>
      </header>
+    
     <div id="proizvodi">
         
             <h3 id="products_h">Unesite studenta koji je dobio stipendiju</h3>
@@ -64,16 +65,9 @@
         	
 
     </div>
- <footer class="glavnifooter">
+    <footer class="glavnifooter">
         <p>Copyright &copy;<a href="#" title="DenisDzafo"> Denis Džafo </a></p>
     </footer>
-    
-    <SCRIPT src="javaScript/skripta.js"></SCRIPT> 
-    <SCRIPT src="javaScript/skriptaAjax.js"></SCRIPT>
-    <SCRIPT src="javaScript/proizvodi.js"></SCRIPT>
+    <SCRIPT src="javaScript/skripta.js"></SCRIPT>
 </body>
-    
-    
-    
-    
 </html>

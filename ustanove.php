@@ -11,24 +11,23 @@
         <h2 class="naslov"> Ministarstvo obrazovanja Čeljigovići 
         </h2>
         <nav>
-             <ul>
-            <li><a href="#" onclick="ucitaj('index.html')">Naslovna</a></li>
-            <li><a href="#" onclick="ucitaj('ministarstvo.html')">Ministarstvo</a></li>
-            <li><a href="#" onclick="ucitaj('ustanove.html')">Ustanove</a></li>
-            <li><a href="#" onclick="ucitaj('kontakt.html')">Kontakt</a></li>
+            <ul>
+            <li><a href="#" onclick="ucitaj('index.php')">Naslovna</a></li>
+            <li><a href="#" onclick="ucitaj('ministarstvo.php')">Ministarstvo</a></li>
+            <li><a href="#" onclick="ucitaj('ustanove.php')">Ustanove</a></li>
+            <li><a href="#" onclick="ucitaj('kontakt.php')">Kontakt</a></li>
              <li>
 					<a href="#" id="Obrazovanje" onclick="prikaziSakrij()"  >▼ Obrazovanje</a>
 					<div id="obrazovanjeMeni" class="hidden" >
-							<a href="#" onclick="ucitaj('stipendije.html')">Stipendije</a>
+							<a href="#" onclick="ucitaj('stipendije.php')">Stipendije</a>
 							<a href="#">Takmičenja</a>
 							<a href="#">Stručno usavršavanje</a>
 					</div>
 				</li>
             </ul>
-            
          </nav>
      </header>
-<ul class="listaustanova">
+    <ul class="listaustanova">
          <li>        
     Lista ustanova
          </li>
@@ -70,21 +69,14 @@
                     <td>Srednja medicinska škola "Dr Arslanagić"</td>
                     <td>Nenada Oluje 12 Dablin</td>
                     <td>033 987 654</td>
-                    <td>www.drarslanagic1.edu.celj</td>
+                    <td>www.drarslanagic.edu.celj</td>
                 </tr>
             </table>
         </article>
     </aside>
-     <footer class="glavnifooter">
+    <footer class="glavnifooter">
         <p>Copyright &copy;<a href="#" title="DenisDzafo"> Denis Džafo </a></p>
     </footer>
-    
-    <SCRIPT src="javaScript/skripta.js"></SCRIPT> 
-   <SCRIPT src="javaScript/skriptaAjax.js"></SCRIPT>
-    <SCRIPT src="javaScript/proizvodi.js"></SCRIPT>
+    <SCRIPT src="javaScript/skripta.js"></SCRIPT>
 </body>
-    
-    
-    
-    
 </html>
