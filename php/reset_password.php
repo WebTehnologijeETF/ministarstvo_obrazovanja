@@ -23,7 +23,7 @@ Unesi email: <br> <input type='text' name='email'>
         {
             $code=rand(10000, 1000000);
             $to=$db_email;
-            $subject="Password Reset";
+            $subject="Passord Reset";
             $body =" Ovo je automatski email, ne odgovarajre na ovaj mail";
             
             mysql_query("UPDATE korisnici SET pass=$code WHERE ime='$username'");
@@ -45,4 +45,4 @@ Unesi email: <br> <input type='text' name='email'>
     }
 ?>
 
-<div align="center"><a href="index.php">Zatvorite ovaj prozor</a></div>
+<div align="center"><a href="../index.php">Zatvorite ovaj prozor</a></div>

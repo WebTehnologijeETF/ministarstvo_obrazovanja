@@ -23,19 +23,16 @@ comments.focus()
 <?php
 
 include ('mysql_connect.php');
-
-
 $result = mysql_query("SELECT id, naslov, autor, slika, tekst, datum, detaljnije FROM news_posts ORDER BY datum DESC");
-
 
 if ($result) {
 
 while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
     $detaljnije=$row['detaljnije'];
     $tekst=$row['tekst'];
-    $url = 'comments.php?id='.$row['id'];
+    $url = 'php/comments.php?id='.$row['id'];
     $imaDetaljno = false;
-    $linkDetaljno = '<a class="read-more" href="?klikDetaljno='.$row['id'].'">Detaljnije...</a>';
+    $linkDetaljno = '<a class="read-more" href="?klikDetaljno='.$row['id'].'">DETALJNIJE...</a>';
     if(strlen($detaljnije)!=0) $imaDetaljno = true;
         if(!$imaDetaljno) {
             $linkDetaljno = "";
@@ -52,7 +49,9 @@ Objavio : <b>'.$row['autor'].'</b><br />
 <b>Objavljeno : <b/>'.$row['datum']. '<br />
 '.$row['tekst'].'<br />';
         echo "<p>$linkDetaljno </p>";
-    
+    if(isset($_GET['klikDetaljno'])){
+        break; 
+     }
 
 echo '<a href="javascript:openComments(\''.$url.'\')">Dodaj novi komentar ili pogledaj ostale komentare</a></p>';
 }  

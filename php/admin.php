@@ -16,11 +16,11 @@ exit();
     <head>
     <title> Ministarstvo obrazovanja Čeljigovići</title>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="stil/stil.css" type="text/css"/>
+        <link rel="stylesheet" href="../stil/stil.css" type="text/css"/>
     </head>
 <body class="body">
     <header class="glavniheader">
-        <img src="img/logo.png" alt="logo">
+        <img src="../img/logo.png" alt="logo">
         <h2 class="naslov"> Ministarstvo obrazovanja Čeljgovići 
         </h2>
         
