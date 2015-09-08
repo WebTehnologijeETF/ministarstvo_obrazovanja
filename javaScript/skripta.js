@@ -75,5 +75,49 @@ function validacijaKontakt(){
         document.getElementById('porukaUpozorenje').style.visibility = 'hidden';
         document.getElementById('porukaTekst').style.visibility = 'hidden';
     }
-
+    
+	var ajax = new XMLHttpRequest();
+	var mjesto = document.getElementById('mjesto').value;
+	mjesto = encodeURIComponent(mjesto);
+	var pbroj = document.getElementById('pbr').value;
+	pbroj = encodeURIComponent(pbroj);
+	ajax.onreadystatechange = function() {
+		if (ajax.readyState == 4 && ajax.status == 200){
+			var odgovor = JSON.parse(ajax.responseText);
+			if(odgovor.greska == "Nepostojeće mjesto"){
+				
+				document.getElementById('mjestoUpozorenje').style.visibility = 'visible';
+				document.getElementById('obaveznoM').innerHTML = odgovor.greska;
+				document.getElementById('obaveznoM').style.display = "inline";
+			}
+			else if(odgovor.greska == "Poštanski broj ne odgovara mjestu"){
+				
+				document.getElementById('mjestoUpozorenje').style.visibility = 'visible';
+				document.getElementById('obaveznoM').innerHTML = odgovor.greska;
+				document.getElementById('obaveznoM').style.display = "inline";
+			}
+			else{
+				document.getElementById('obaveznoM').style.display="none";
+				document.getElementById('mjestoUpozorenje').style.visibility = 'hidden';
+			}
+			
+			if(odgovor.greska == "Nepostojeći poštanski broj"){
+				
+				document.getElementById('postanskiBrojUpozorenje').style.visibility = 'visible';
+				document.getElementById('obaveznoPB').innerHTML = odgovor.greska;
+				document.getElementById('obaveznoPB').style.display = "inline";
+			}
+			else{
+				document.getElementById('obaveznoPB').style.display="none";
+				document.getElementById('postanskiBrojUpozorenje').style.visibility = 'hidden';
+			}
+		}
+		if (ajax.readyState == 4 && ajax.status == 404) {
+			document.getElementById('mjesto').innerHTML = "Greska: nepoznat URL";
+		}
+	}
+	ajax.open("GET", "http://zamger.etf.unsa.ba/wt/postanskiBroj.php?mjesto=" + mjesto + "&postanskiBroj=" + pbroj, true);
+	ajax.send();
+	
+	//return validna;
 }
