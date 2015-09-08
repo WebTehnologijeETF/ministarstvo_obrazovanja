@@ -1,79 +1,81 @@
+	<html>
+
+<head>
+
+<script type="text/javascript">
+
+function openComments(url)
+
+{
+
+comments = window.open(url, "Comment", "menubar=0,resizable=0,width=380,height=480")
+
+comments.focus()
+
+}
+
+</script>
+
+</head>
+
+<body>
+
 <?php
-    $vijest = array();
-	$broj_vijesti = 0;
-	$vijesti = array();
-	
-   $files = glob('novosti/*.txt', GLOB_BRACE);
-    $niz = array();
-    foreach($files as $file) {
-        $sadrzaj = file($file);
-        array_push($niz, $sadrzaj);
-    }
+
+include ('mysql_connect.php');
+
+
+$result = mysql_query("SELECT id, naslov, autor, slika, tekst, datum, detaljnije FROM news_posts ORDER BY datum DESC");
+
+
+if ($result) {
+
+while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+    $detaljnije=$row['detaljnije'];
+    $tekst=$row['tekst'];
+    $url = 'comments.php?id='.$row['id'];
+    $imaDetaljno = false;
+    $linkDetaljno = '<a class="read-more" href="?klikDetaljno='.$row['id'].'">Detaljnije...</a>';
+    if(strlen($detaljnije)!=0) $imaDetaljno = true;
+        if(!$imaDetaljno) {
+            $linkDetaljno = "";
+        }
+    if(isset($_GET['klikDetaljno'])){
+        break; 
+     }
+     print "<img src='".htmlentities($row['slika'],ENT_QUOTES)."' alt='Slika'>";
+   
+echo '<p>
+
+<b>'.$row['naslov'].'</b><br />
+Objavio : <b>'.$row['autor'].'</b><br />
+<b>Objavljeno : <b/>'.$row['datum']. '<br />
+'.$row['tekst'].'<br />';
+        echo "<p>$linkDetaljno </p>";
     
-    for($i = 0; $i < count($niz); $i++) {
-        for($j = 0; $j < count($niz); $j++) {
-            if(strtotime($niz[$i][0]) > strtotime($niz[$j][0])) {
-                $tren = $niz[$i];
-                $niz[$i] = $niz[$j];
-                $niz[$j] = $tren;
-            }
-        }
-    }
 
+echo '<a href="javascript:openComments(\''.$url.'\')">Dodaj novi komentar ili pogledaj ostale komentare</a></p>';
+}  
+}
+if(isset($_GET['klikDetaljno'])){
+$rezultat = mysql_query("SELECT * FROM news_posts WHERE id=".$_GET['klikDetaljno']);
 
-    foreach ($niz as $clan) {
-        $datum = $clan[0];
-        $autor = $clan[1];
-        $naslov = $clan[2];
-        $slika = '<img class = "article-pic" src="'.$clan[3].'" alt="neka slika">';
-        $tekst = "";
-        $detaljno = "";
-        $imaDetaljno = false;
-        $index  = 4;
-        $sadrzaj="";
-        while($index < count($clan)){
-        if(trim($clan[$index]) === "--") {
-               $imaDetaljno = true;
-               $index = $index + 1;
-               break;
-           }
-            $tekst = $tekst . $clan[$index];
-            $index = $index + 1;
-        }
-        
-       while($imaDetaljno && $index <  count($clan))
-        {
-            $detaljno = $detaljno." ".$clan[$i];
-            $index = $index + 1;
-        }
-
-        if($imaDetaljno) 
-            $linkDetaljno = '<a class="read-more" href="?add='.$broj_vijesti.'">Detaljnije...</a>';
-       
-        else $linkDetaljno = '';
-        
-        $broj_vijesti = $broj_vijesti + 1;
-
-        $saDetaljima = '<div class="article"><h1>'.ucfirst(strtolower($naslov)).'</h1>
-                  				   <h2><strong>autor : </strong>'.$autor.', <strong>Objavljeno : </strong>'.$datum.'</h2>
-                  				   '.$slika.'<p>'.$tekst.'<br>'.$detaljno.'</p><br></div>';
-        array_push($vijesti, $saDetaljima);
-
-			$bezDetalja= '<div class="article"><h1>'.ucfirst(strtolower($naslov)).'</h1>
-                  			<h2><strong>autor : </strong>'.$autor.', <strong>Objavljeno : </strong>'.$datum.'</h2>
-                  		   '.$slika.'<p>'.$tekst.'</p>'.$linkDetaljno.'<br></div>';
-
-            array_push($vijest, $bezDetalja);
-        
-        if(isset($_GET['add'])) 
-			{
-				if($_GET['add'] <= ($broj_vijesti - 1))
-				{
-					$vijest = array();
-    				array_push($vijest, $vijesti[$_GET['add']]);
-				}	
-			}
-
-    }
+if($rezultat){
     
+    while($row = mysql_fetch_array($rezultat, MYSQL_ASSOC))
+    {
+         print "<img src='".htmlentities($row['slika'],ENT_QUOTES)."' alt='Slika'>";
+        echo '<p>
+        <b>'.$row['naslov'].'</b><br />
+        Objavio : <b>'.$row['autor'].'</b><br />
+        <b>Objavljeno : <b/>'.$row['datum']. '<br />
+        '.$row['tekst'].'<br />
+        '.$row['detaljnije'].'<br />';
+    }
+}
+}
+
 ?>
+</body>
+</html>
+

@@ -32,13 +32,6 @@
     <div class="glavnisadrzaj">
         <div class="sadrzaj">
             <?php include 'news.php';?>
-            <?php 
-                            foreach($vijest as $value){ 
-                                echo $value;    
-                            ?>  <br />
-                            <?php
-                            }
-                        ?>
         </div>    
     </div>
      <aside class="vrh-sidebar">
@@ -60,18 +53,42 @@
 				</ul>
         </article>
     </aside>
-   <aside class="sredina-sidebar">
+    <aside class="sredina-sidebar">
         <article>
-            <h2>Sa strane 2</h2>             
-            <p>Protozvijezda povećala se 35 puta u samo dvije godine gutajući gas iz svoje okoline u maglini NGC 1977 u
-            </p>
-        </article>
+            <h2>Admin panel</h2>             
+            <form action="check.php" method="post">
+     
+    <tr> 
+          <td>
+            Username(admin):
+        </td>
+        <td>
+            <input type="text" name="ime" /><br>
+        </td>
+          </tr>
+          <tr>
+          <td>
+            Password(123):
+          </td>
+            <td>
+            <input type="password" name="pass" /><br>
+          </td>
+          </tr>
+          <tr>
+                <td>
+                    <input type="submit" value="LOGUJ SE" />
+              </td>
+              
+          </tr>
+
+        </form>
+        </article>         
+            <a href="reset_password.php">Zaboravili ste password</a></li>
     </aside>
     <aside class="dno-sidebar">
         <article>
-            <h2>Sa strane 3</h2>             
-            <p>Protozvijezda povećala se 35 puta u samo dvije godine gutajući gas iz svoje okoline u maglini NGC 1977 u
-            </p>
+            <h2>Niste naš korisnik, registruj te se</h2>             
+            <a href="registracija.php">Registracija</a></li>
         </article>
     </aside>
     
@@ -82,7 +99,6 @@
     
 <SCRIPT src="javaScript/skripta.js"></SCRIPT>
 <SCRIPT src="javaScript/skriptaAjax.js"></SCRIPT>
-<SCRIPT src="javaScript/proizvodi.js"></SCRIPT>
 </body>
     
     
