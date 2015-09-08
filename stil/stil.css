@@ -148,3 +148,54 @@ a:hover, a:active{
     margin-left: 150px;
     padding: 5px;
 }
+#imeUpozorenje {
+    visibility: hidden;
+}
+#imeTekst{
+    color: red;
+    visibility: hidden;
+}
+#prezimeUpozorenje {
+    visibility: hidden;
+}
+#prezimeTekst{
+    color: red;
+    visibility: hidden;
+}
+#emailUpozorenje {
+    visibility: hidden;
+}
+#emailTekst{
+    color: red;
+    visibility: hidden;
+}
+#email2Upozorenje {
+    visibility: hidden;
+}
+#email2Tekst{
+    color: red;
+    visibility: hidden;
+}
+#porukaUpozorenje {
+    visibility: hidden;
+}
+#porukaTekst{
+    color: red;
+    visibility: hidden;
+}
+ #obrazovanjeMeni
+{
+	visibility: hidden;
+}
+#obrazovanjeMeni 
+{
+	background-color: #666;
+    color: white;
+	text-align: center;
+    border-radius:5px;
+}
+#glavniheader #obrazovanjeMeni a:hover
+{
+	background-color: #cf5c3f;
+	border-radius:5px;
+}
